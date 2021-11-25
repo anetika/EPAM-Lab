@@ -9,14 +9,12 @@ public class StringUtilsTest {
     @Test
     public void isPositiveNumberTestTrue() {
         String str = "7";
-        StringUtils stringUtils = new StringUtils();
-        assertTrue(stringUtils.isPositiveNumber(str));
+        assertTrue(StringUtils.isPositiveNumber(str));
     }
 
     @Test
     public void isPositiveNumberTestFalse() {
         String str = "-1";
-        StringUtils stringUtils = new StringUtils();
-        assertFalse(stringUtils.isPositiveNumber(str));
+        assertFalse(StringUtils.isPositiveNumber(str));
     }
 }
