@@ -1,11 +1,10 @@
 plugins {
     id 'java'
-    //id 'com.github.johnrengelman.shadow' version '7.0.0'
-    id 'com.github.johnrengelman.shadow' version '2.0.2'
+    id 'maven-publish'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.epam'
+version '1.3.5'
 
 repositories {
     mavenCentral()
@@ -28,12 +27,13 @@ jar {
                 'Implementation-Version': project.version)
     }
 }
- shadowJar {
-     archivesBaseName = 'utils'
-     archiveVersion = '1.3.5'
-     manifest {
-         attributes 'Main-Class': 'edu.epam.utils.StringUtils',
-                 'Implementation-Title': project.name,
-                 'Implementation-Version': project.version
-     }
- }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+build.dependsOn publishToMavenLocal
